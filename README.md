@@ -71,3 +71,20 @@ See <https://mui.com/material-ui/getting-started/installation/>
 ```bash
 npm install @mui/material @emotion/react @emotion/styled
 ```
+
+### Angular
+
+See <https://angular.io/guide/setup-local>
+
+```bash
+npm install -g @angular/cli
+ng new my-app
+```
+
+#### Adding Angular Material
+
+See <https://material.angular.io/guide/getting-started>
+
+```bash
+ng add @angular/material
+```
