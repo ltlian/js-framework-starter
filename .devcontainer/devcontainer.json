@@ -1,0 +1,66 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.203.0/containers/typescript-node
+{
+  "name": "Node.js & TypeScript",
+  "runArgs": [
+    "--init",
+    // Override resolv.conf generation
+    // See https://docs.docker.com/config/containers/container-networking/
+    "--dns",
+    "8.8.8.8"
+  ],
+  "build": {
+    "dockerfile": "Dockerfile",
+    // Update 'VARIANT' to pick a Node version: 16, 14, 12.
+    // Append -bullseye or -buster to pin to an OS version.
+    // Use -bullseye variants on local on arm64/Apple Silicon.
+    "args": {
+      "VARIANT": "18-bullseye"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "extensions.ignoreRecommendations": true,
+        "git.rebaseWhenSync": true,
+        "git.autofetch": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "[svg]": {
+          "editor.defaultFormatter": "jock.svg"
+        },
+        "prettier.prettierPath": "./node_modules/prettier",
+        "editor.formatOnSave": true,
+        "yaml.schemas": {
+          "http://json.schemastore.org/stylelintrc": ".stylelintrc.yaml",
+          "http://json.schemastore.org/eslintrc": ".eslintrc.yaml"
+        },
+        "files.associations": {
+          "*.json": "jsonc",
+          "[Dd]ockerfile*": "dockerfile",
+          "docker-compose*": "yaml"
+        }
+      },
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "stylelint.vscode-stylelint",
+        "esbenp.prettier-vscode",
+        "editorconfig.editorconfig",
+        "redhat.vscode-yaml",
+        "styled-components.vscode-styled-components",
+        "aaron-bond.better-comments",
+        "usernamehw.errorlens",
+        "eamodio.gitlens",
+        "davidanson.vscode-markdownlint",
+        "ionutvmi.path-autocomplete",
+        "jock.svg"
+      ]
+    }
+  },
+  // [Optional] Run command after container is created
+  // "onCreateCommand": "npm install",
+  "remoteUser": "node",
+  // [Optional] Install additional features. See https://containers.dev/features
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {}
+  }
+}
