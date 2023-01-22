@@ -1,12 +1,31 @@
 # Javascript / Typescript starter
 
-This repository contains a foundation for starting a javascript frontend framework project such as React or Vue.
+This repository contains a foundation for starting a javascript frontend framework project such as React or Vue, as well as notes on how to work with remote containers and WSL.
 
 ## Styling and formatting setup
 
 Prettier, gitattributes, and editorconfig are used to enforce consistent line endings.
 
 The `/.vscode` folder contains settings for using the project's local installation of typescript and prettier.
+
+## Running in dedicated WSL environment
+
+It's possible to create a WSL instance for working with a specific stack, or one that is dedicated to a specific project.
+
+For example, you could create a separate WSL installation based on the image `mcr.microsoft.com/vscode/devcontainers/typescript-node:0-18-bullseye`, or any other regular distro.
+
+See <https://learn.microsoft.com/en-us/windows/wsl/use-custom-distro>
+
+### Exporting the image
+
+```bash
+docker container ls -a | grep -i typescript-node:0-18-bullseye | awk '{print $1}'
+docker export CONTAINER_ID > /mnt/c/temp/typescript-node:0-18-bullseye.tar
+```
+
+### Importing the tarball
+
+`wsl --import <distro-label> <save-to-path> <file-to-import>`
 
 ## VS Code development container
 
