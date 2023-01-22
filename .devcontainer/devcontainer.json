@@ -21,18 +21,21 @@
   "customizations": {
     "vscode": {
       "settings": {
+        "prettier.prettierPath": "./node_modules/prettier",
+        "typescript.tsdk": "./node_modules/typescript/lib",
         "extensions.ignoreRecommendations": true,
         "git.rebaseWhenSync": true,
         "git.autofetch": true,
+        "task.allowAutomaticTasks": "off",
         "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
         "[svg]": {
           "editor.defaultFormatter": "jock.svg"
         },
-        "prettier.prettierPath": "./node_modules/prettier",
-        "editor.formatOnSave": true,
         "yaml.schemas": {
-          "http://json.schemastore.org/stylelintrc": ".stylelintrc.yaml",
-          "http://json.schemastore.org/eslintrc": ".eslintrc.yaml"
+          "http://json.schemastore.org/prettierrc": ".prettier.yaml",
+          "http://json.schemastore.org/eslintrc": ".eslintrc.yaml",
+          "http://json.schemastore.org/stylelintrc": ".stylelintrc.yaml"
         },
         "files.associations": {
           "*.json": "jsonc",
