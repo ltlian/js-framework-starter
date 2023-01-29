@@ -1,5 +1,5 @@
 import { Brightness3, Brightness7 } from '@mui/icons-material'
-import { FormGroup, FormControlLabel, Switch, Grid } from '@mui/material'
+import { FormControlLabel, FormGroup, Grid, Switch } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
 import { toggleTheme } from './redux/themeSlice'
 
