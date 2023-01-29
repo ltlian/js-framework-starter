@@ -1,3 +1,5 @@
+import FavoriteIcon from '@mui/icons-material/Favorite'
+import { Button, Card, CardActions, CardContent, IconButton, Typography } from '@mui/material'
 import { Form, LoaderFunctionArgs, useFetcher, useLoaderData } from 'react-router-dom'
 import { getThingAsync, updateThing } from '../mockdata/localDataStore'
 
@@ -32,17 +34,17 @@ export default function Thing() {
   if (!thing) throw new Error()
 
   return (
-    <div id="thing">
+    <Card>
       {thing.thumbnail && (
         <div>
           <img key={thing.thumbnail} src={thing.thumbnail} />
         </div>
       )}
 
-      <div>
-        <h1>
-          {thing.name ? <>{thing.name}</> : <i>No Name</i>} <Favorite {...thing} />
-        </h1>
+      <CardContent>
+        <Typography component="div" variant="h5">
+          {thing.name ? <>{thing.name}</> : <i>No Name</i>}
+        </Typography>
 
         {thing.twitter && (
           <p>
@@ -54,9 +56,12 @@ export default function Thing() {
 
         {thing.notes && <p>{thing.notes}</p>}
 
-        <div>
+        <CardActions>
+          <Favorite {...thing}></Favorite>
           <Form action="edit">
-            <button type="submit">Edit</button>
+            <Button type="submit" color="secondary">
+              Edit
+            </Button>
           </Form>
           <Form
             method="post"
@@ -67,11 +72,13 @@ export default function Thing() {
               }
             }}
           >
-            <button type="submit">Delete</button>
+            <Button type="submit" color="warning">
+              Delete
+            </Button>
           </Form>
-        </div>
-      </div>
-    </div>
+        </CardActions>
+      </CardContent>
+    </Card>
   )
 }
 
@@ -84,13 +91,14 @@ function Favorite(thing: ThingDescription) {
 
   return (
     <fetcher.Form method="post">
-      <button
-        name="favorite"
-        value={favorite ? 'false' : 'true'}
+      <IconButton
         aria-label={favorite ? 'Remove from favorites' : 'Add to favorites'}
+        name="favorite"
+        type="submit"
+        value={favorite ? 'false' : 'true'}
       >
-        {favorite ? '★' : '☆'}
-      </button>
+        <FavoriteIcon color={favorite ? 'primary' : 'disabled'} />
+      </IconButton>
     </fetcher.Form>
   )
 }

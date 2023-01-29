@@ -1,3 +1,4 @@
+import { Button, Stack, TextField } from '@mui/material'
 import { ActionFunctionArgs, Form, redirect, useLoaderData, useNavigate } from 'react-router-dom'
 import { updateThing } from '../mockdata/localDataStore'
 
@@ -14,44 +15,48 @@ export default function EditThing() {
 
   return (
     <Form method="post" id="thing-form">
-      <p>
-        <span>Name</span>
-        <input
+      <Stack
+        sx={{
+          width: '25ch',
+        }}
+        spacing={2}
+      >
+        <TextField
+          name="name"
           placeholder="Name"
           aria-label="Name"
-          type="text"
-          name="name"
+          helperText="Name"
           defaultValue={thing.name}
         />
-      </p>
-      <label>
-        <span>Twitter</span>
-        <input type="text" name="twitter" placeholder="@handle" defaultValue={thing.twitter} />
-      </label>
-      <label>
-        <span>Avatar URL</span>
-        <input
+        <TextField
+          name="twitter"
+          placeholder="@handle"
+          aria-label="twitter"
+          helperText="twitter"
+          defaultValue={thing.twitter}
+        />
+        <TextField
+          name="avatar"
           placeholder="https://example.com/avatar.jpg"
           aria-label="Avatar URL"
-          type="text"
-          name="avatar"
+          helperText="Avatar URL"
           defaultValue={thing.thumbnail}
         />
-      </label>
-      <label>
-        <span>Notes</span>
-        <textarea name="notes" defaultValue={thing.notes} rows={6} />
-      </label>
+        <TextField label="notes" multiline defaultValue={thing.notes} rows={6} />
+      </Stack>
       <p>
-        <button type="submit">Save</button>
-        <button
+        <Button color="primary" type="submit">
+          Save
+        </Button>
+        <Button
           type="button"
+          color="secondary"
           onClick={() => {
             navigate(-1)
           }}
         >
           Cancel
-        </button>
+        </Button>
       </p>
     </Form>
   )
